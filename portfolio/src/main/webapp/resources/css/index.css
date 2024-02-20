@@ -1,0 +1,130 @@
+@charset "EUC-KR";
+
+
+.base-product h2 {
+    font-weight: normal;
+    font-size: 15px;
+    color:#000;
+    text-align: center;
+    letter-spacing: 1pt;
+    margin: 0px;
+}
+#underline {
+    width: 70px;
+    height: 1px;
+    background: #aaa;
+    margin: 20px auto;
+}
+
+#tabPrd {
+    width: 99.1%;
+    overflow: hidden;
+    clear: both;
+    margin: 0px auto 40px;
+}
+
+.bx-wrapper {
+    position: relative;
+    margin: 0 auto 0px;
+    padding: 0;
+    zoom: 1;
+}
+.bx-wrapper img{
+    max-width: 100%;
+    height: auto;
+}
+.bx-wrapper .bx-viewport {
+    left:0px;
+    background:#fff;
+    -webkit-transform: translatez(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+#prdPager {
+    width:100%;
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#prdPager li {
+    list-style: none;
+    margin: 0 20px;
+    display: inline-block;
+    text-align: center;
+}
+#prdPager li a {
+    display: block;
+    padding: 5px 8px;
+    font-size: 11px;
+    font-weight: normal;
+    color: #888;
+}
+#prdPager li a.active {
+    background: #fff;
+    color: #000;
+    border-bottom: 1px solid #333;
+}
+.base-product-1 .prdList {
+    display: table;
+    width: 100%;
+    min-width: 756px;
+    margin: 0px 0 0;
+    font-size: 0;
+    line-height: 0;
+}
+.base-product-1 .prdList > li {
+    display: inline-block;
+    margin: 0px 0 10px;
+    color: #757575;
+    vertical-align: top;
+}
+.base-product-1 .prdList .prdbox {
+    width: 97%;
+    margin: 2% auto;
+    position: relative;
+}
+.base-product-1 ul.grid1 > li.prdbox1 {
+    width: 33.3334%;
+    float: left;
+}
+.base-product-1 ul.grid1 > li.prdbox1 .prdbox {
+    margin: 1% auto;
+    width:98%;
+}
+.base-product-1 ul.grid1 > li img {
+    max-width: 100%;
+    height: auto;
+}
+.base-product-1 ul.grid1 > li.prdbox2 {
+    width: 16.6667%;
+    float: left;
+}
+.base-product-1 ul.grid1 > li.prdbox2 .prdbox {
+    margin: 2% auto;
+}
+
+.base-product-1 ul.grid2 > li {
+    width: 33.33%;
+    float: left;
+}
+.prdbox .price {
+    position: absolute;
+    bottom: 10px; /* 아래 여백 조절 */
+    left: 10px; /* 왼쪽 여백 조절 */
+    background-color: rgba(255, 255, 255, 0.7); /* 투명한 흰색 배경색 */
+    padding: 5px; /* 내부 여백 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    font-size: 15px;
+}
+.base-product-1 ul.grid2 > li img {
+    max-width: 100%;
+    height: auto;
+}
+.listmain-2 {
+    width:80%;
+    margin: 0px auto;
+}

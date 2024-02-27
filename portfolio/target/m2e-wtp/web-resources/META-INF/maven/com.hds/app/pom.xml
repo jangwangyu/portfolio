@@ -129,11 +129,13 @@
 		</dependency>
 		
 		<!-- @Inject -->
+		<!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
 		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
+		    <groupId>javax.inject</groupId>
+		    <artifactId>javax.inject</artifactId>
+		    <version>1</version>
 		</dependency>
+
 		
 		<!--비밀번호 암호화 -->
 		<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
@@ -206,6 +208,13 @@
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 			<version>2.7.4</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
+		<dependency>
+		    <groupId>org.codehaus.jackson</groupId>
+		    <artifactId>jackson-mapper-asl</artifactId>
+		    <version>1.5.0</version>
 		</dependency>
 		
 		<!-- mybatis -->

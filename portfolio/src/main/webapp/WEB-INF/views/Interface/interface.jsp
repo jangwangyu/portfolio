@@ -4,16 +4,16 @@
             <!-- 공용 인터페이스 -->
             <div class="topLogo">
                 <!-- 홈페 로고 -->
-                <a href="Home.html">포트폴리오</a>
+                <a href="/">포트폴리오</a>
             </div>
             <div class="topLog">
                 <div class="layout-statelogoff">
                 <!-- 로그인 -->
-                    <li><a href="login.html" class="-ms">LOGIN</a></li>
-                    <li><a href="join.html" class="-ms">JOIN</a></li>
-                    <li><a href="cart.html" class="-ms">CART</a></li>
-                    <li><a href="order.html" class="-ms">ORDER</a></li>
-                    <li><a href="mypage.html" class="-ms">MYPAGE</a></li>
+                    <li><a href="../Member/login" class="-ms">LOGIN</a></li>
+                    <li><a href="../Member/join" class="-ms">JOIN</a></li>
+                    <li><a href="../Member/cart" class="-ms">CART</a></li>
+                    <li><a href="../Member/order" class="-ms">ORDER</a></li>
+                    <li><a href="../Member/mypage" class="-ms">MYPAGE</a></li>
                 </div>
             </div>
             <div id="topMenu">

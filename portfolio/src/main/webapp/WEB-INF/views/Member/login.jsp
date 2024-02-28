@@ -219,10 +219,10 @@ body {
           <a href="Home.html">포트폴리오</a>    
         </div>
         <div id="login_box">
-          <form>
-            <input class="input" type="text" placeholder="아이디를 입력해 주세요"/>
+          <form action="/Member/loginPost" method="post">
+            <input class="input" type="text" id="member_id" name="member_id" placeholder="아이디를 입력해 주세요"/>
             <br/>
-            <input class="input" type="password" placeholder="비밀번호를 입력해 주세요" />
+            <input class="input" type="password" name="passwd" id="passwd" placeholder="비밀번호를 입력해 주세요" />
             <br/>
             <span class="submit"><input type="submit" value="로그인"/></span>
             <label class="checkbox">
@@ -230,7 +230,7 @@ body {
             </label>
           </form>
           <ul id="sub_menu">
-            <li><a href="join.html">회원 가입</a></li>
+            <li><a href="/Member/join">회원 가입</a></li>
             <li><a href="#">아이디 찾기</a></li>
             <li><a href="#">비밀번호 찾기</a></li>
           </ul>

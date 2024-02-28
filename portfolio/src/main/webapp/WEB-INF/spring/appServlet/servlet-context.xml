@@ -24,5 +24,35 @@
 	<!-- 스캔할 bean들이 모여있는 패키지를 지정한다. -->
 	<context:component-scan base-package="com.portfolio" />
 	
+	<beans:bean id="loginInterceptor" class="com.portfolio.interceptor.loginInterceptor"/>
+		<interceptors>
+		    <interceptor>
+		        <mapping path="/Member/loginPost"/>
+		        <beans:ref bean="loginInterceptor"/>
+		    </interceptor>
+		</interceptors>
+	
+	<beans:bean id="authInterceptor" class="com.portfolio.interceptor.authInterceptor"/>
+		<interceptors>
+			<interceptor>
+			
+				<mapping path="/Member/mypage" />
+				<mapping path="/Member/order" />
+				
+				<beans:ref bean="authInterceptor" />
+			</interceptor>
+		
+		</interceptors>
+	
+	<beans:bean id="uRlInterceptor" class="com.portfolio.interceptor.URLInterceptor" />
+		<interceptors>
+		  <interceptor>
+		    <mapping path="/**/**"/>
+		    <exclude-mapping path="/resources/**"/>
+		    <exclude-mapping path="/Member/**"/>
+		    <exclude-mapping path="/reply/**" />
+		    <beans:ref bean="uRlInterceptor"/>
+		  </interceptor>
+		</interceptors>
 	
 </beans:beans>

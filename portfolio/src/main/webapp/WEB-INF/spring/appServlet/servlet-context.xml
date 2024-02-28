@@ -54,5 +54,14 @@
 		    <beans:ref bean="uRlInterceptor"/>
 		  </interceptor>
 		</interceptors>
+		
+	<beans:bean id="RememberInterceptor" class="com.portfolio.interceptor.rememberInterceptor" />
+		<interceptors>
+			<interceptor>
+				<mapping path="/**/" />
+				<beans:ref bean="RememberInterceptor" />
+			</interceptor> 
+		
+		</interceptors>
 	
 </beans:beans>

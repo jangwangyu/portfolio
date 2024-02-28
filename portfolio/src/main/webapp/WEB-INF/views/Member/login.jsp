@@ -216,7 +216,7 @@ body {
     <div id="wrap">
       <div id="login_area">
         <div id="login_header">
-          <a href="Home.html">포트폴리오</a>    
+          <a href="/">포트폴리오</a>    
         </div>
         <div id="login_box">
           <form action="/Member/loginPost" method="post">
@@ -226,7 +226,7 @@ body {
             <br/>
             <span class="submit"><input type="submit" value="로그인"/></span>
             <label class="checkbox">
-                <input type="checkbox" name="autologin" id="autologin"/> 자동 로그인
+                <input type="checkbox" name="useCookie" id="useCookie"/> 자동 로그인
             </label>
           </form>
           <ul id="sub_menu">

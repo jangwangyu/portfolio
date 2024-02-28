@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.portfolio.memberMapper">
+	<!-- 회원가입 -->
+	<insert id="register">
+		insert into MEMBER(
+			member_id,
+			passwd, 
+			name, 
+			postcode1, 
+			addr1, 
+			addr2, 
+			mobile1, 
+			mobile2, 
+			mobile3, 
+			email, 
+			is_sex, 
+			birth_year, 
+			birth_month, 
+			birth_day, 
+			bank_account_owner, 
+			refund_bank_code, 
+			bank_account_no
+		)VALUES(
+			#{member_id},
+			#{passwd},
+			#{name},
+			#{postcode1},
+			#{addr1},
+			#{addr2},
+			#{mobile1},
+			#{mobile2},
+			#{mobile3},
+			#{email},
+			#{is_sex},
+			#{birth_year},
+			#{birth_month},
+			#{birth_day},
+			#{bank_account_owner},
+			#{refund_bank_code},
+			#{bank_account_no}
+			)
+	</insert>
+	
+	<!-- <select id="idCnt" parameterType="com.portfolio.VO.MemberVO" resultType="java.lang.Integer">
+		<![CDATA[
+			select 
+				count(*) 
+			from 
+				member 
+			where 
+				member_id = #{member_id}
+		]]>
+	</select> -->
+	<select id="selectId" parameterType="com.portfolio.VO.MemberVO" resultType="boolean">
+		<![CDATA[
+			select 
+				count(*) 
+			from 
+				member 
+			where 
+				member_id = #{member_id}
+		]]>
+	</select>
+	<!-- 로그인 -->
+	<select id="login" resultType="com.portfolio.VO.MemberVO">
+		select * from MEMBER
+		where member_id = #{member_id}
+	</select>
+	
+	<!-- 자동로그인 -->
+	<update id="keepLogin">
+		UPDATE member
+		SET session_key = #{session_id},
+		session_limit = #{session_limit}
+		where member_id = #{member_id}
+	</update>
+	
+	<select id="check" resultType="com.portfolio.VO.MemberVO">
+		SELECT
+		*
+		FROM member
+		WHERE session_key = #{value}
+	</select>
+	
+</mapper>

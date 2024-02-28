@@ -1,11 +1,15 @@
 package com.portfolio.Controller;
 
+import java.sql.Date;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
+import org.springframework.web.util.WebUtils;
 
 import com.portfolio.Service.MemberService;
 import com.portfolio.VO.LoginVO;
@@ -124,15 +130,45 @@ public class MemberController {
 		}
 		
 		model.addAttribute("member", memberVO);
+		
+		if(loginVO.isUseCookie()) {
+			int amount = 60*60*24*7;
+			Date session_limit = new Date(System.currentTimeMillis() + (1000*amount));
+			memberService.keepLogin(memberVO.getMember_id(), httpSession.getId(), session_limit);
+		}
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String logout(HttpServletRequest request, HttpSession session)throws Exception{
+	public String logout(HttpServletRequest request, HttpSession session, HttpServletResponse response,ModelMap model)throws Exception{
 		logger.info("logout");
 		
 		Object URL = session.getAttribute("URL");
-		session.invalidate();
+		// session.invalidate();
+		Object object = session.getAttribute("login");
+		
+		if(object != null) {
+			MemberVO memberVO = (MemberVO) object;
+			session.removeAttribute("login");
+			session.invalidate();
+			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			if(loginCookie != null) {
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(0);
+				response.addCookie(loginCookie);
+				memberService.keepLogin(memberVO.getMember_id(),"none",new Date(0));
+			}
+		}
+		logger.info("URL", URL);
+		String requestURL = "/";
+			if(StringUtils.isNotBlank((String)URL))
+				requestURL = (String)URL;
 		
 		return "redirect:"+(String)URL;
+	}
+	
+	@RequestMapping(value = "/errorLogin", method = RequestMethod.GET)
+	public String home() {
+		
+		return "Member/errorLogin";
 	}
 }

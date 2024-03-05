@@ -1,0 +1,158 @@
+caption{
+    display: none;
+}
+.x-board .board-title{
+    min-height: 20px;
+    margin: 10px 0 20px;
+}
+.x-board-board-title .title h2 {
+    display: inline-block;
+    font-weight: normal;
+    padding: 0 0 0 0px;
+    color: #2e2e2e;
+    font-size: 14px;
+    letter-spacing: 1pt;
+}
+.x-board-board-title .title p {
+    display: inline-block;
+    margin: 0 0 0 6px;
+    padding: 0 0 0 10px;
+    color: #bbb;
+}
+.x-board-listpackage .base-table{
+    clear: both;
+}
+.base-table.typeList table {
+    border-top: 1px solid #d7d5d5;
+}
+.base-table table{
+    position: relative;
+    margin: 10px 0 0;
+    border: 1px solid #d7d5d5;
+    border-top: 0;
+    color: #fff;
+    line-height: 1.5;
+}
+.base-table th:first-child {
+    border-left: 0;
+}
+.base-table thead th{
+    padding: 11px 0 10px;
+    border-left: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+    color: #353535;
+    vertical-align: middle;
+    font-weight: normal;
+    background: #fbfafa;
+}
+.base-table .center {
+    text-align: center;
+}
+.base-table.typeList.gBorder tbody td {
+    border-color:#eee;
+}
+.base-table.typeList .center td.left {
+    padding-left: 10px;
+}
+.base-table.typeList .center td {
+    padding-left: 0;
+    padding-right: 0;
+}
+.base-table.typeList td {
+    padding: 8px 10px 7px;
+}
+.base-table .left {
+    text-align: left;
+}
+.base-table td{
+    padding: 11px 10px 10px;
+    border-top: 1px solid #dfdfdf;
+    color: #353535;
+    vertical-align: middle;
+}
+.base-table td a{
+    color: #353535;
+}
+.base-table td a:hover {
+    border-bottom: 1px solid #bbb;
+}
+.base-table.typeList.gBorder tbody td {
+    border-color: #eee;
+}
+.base-table.typeList table{
+    border-top:1px solid #d7d5d5;
+}
+.base-table table + .message {
+    margin: -1px 0 0;
+}
+.base-table .message {
+    border: 1px solid #d7d5d5;
+    padding: 50px 0;
+    text-align: center;
+    color: #757575;
+    font-weight: bold;
+}
+.board-search {
+    padding: 20px 0 20px 10px;
+    color : #2e2e2e;
+    font-size:12px
+}
+.board-search .boardSearch {
+    display: block;
+}
+legend {
+    visibility: hidden;
+    position: absolute;
+    left: -999999999px;
+    top: -999999px;
+    width:0;
+    height:0;
+    line-height: 0;
+}
+.board-search p {
+    margin: 0 0 10px;
+    padding: 0 0 0 7px;
+    background: url("//img.echosting.cafe24.com/skin/base/common/ico_triangle3.gif") no-repeat 0 45%;
+}
+.board-search p::before{
+    content: "검색어";
+}
+img,fieldset {
+    border:none;
+    vertical-align: top;
+}
+.board-search select {
+    width:72px;
+    margin: 0 2px 0 0;
+}
+select{
+    height: 22px;
+    border: 1px solid #d5d5d5;
+    border-radius: 5px;
+}
+input,select,textarea {
+    font-size: 100%;
+    color: #353535;
+    vertical-align: middle;
+}
+option{
+    font-weight: normal;
+    display: block;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+    white-space: nowrap;
+}
+.board-search select#search_date {
+    margin: 0 2px 0 22px;
+}
+input[type=text], input[type=password] {
+    height:18px;
+    line-height: 20px;
+    padding: 2px 4px;
+    border: 1px solid #d5d5d5;
+    color: #353535;
+    font-size: 12px;
+}
+.board-search input {
+    width: 162px;
+}

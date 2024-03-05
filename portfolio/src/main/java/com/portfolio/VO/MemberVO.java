@@ -40,8 +40,22 @@ public class MemberVO {
 	private String bank_account_owner;
 	private String refund_bank_code;
 	private String bank_account_no;
+	private String authKey;
+	private int member_auth;
+
 	
-	
+	public String getAuthKey() {
+		return authKey;
+	}
+	public void setAuthKey(String authKey) {
+		this.authKey = authKey;
+	}
+	public int getMember_auth() {
+		return member_auth;
+	}
+	public void setMember_auth(int member_auth) {
+		this.member_auth = member_auth;
+	}
 	public String getMember_id() {
 		return member_id;
 	}
@@ -148,12 +162,12 @@ public class MemberVO {
 	
 	@Override
 	public String toString() {
-		return "MemberVO [member_id=" + member_id + ", passwd=" + passwd + ", name="
-				+ name + ", postcode1=" + postcode1 + ", addr1=" + addr1 + ", addr2=" + addr2 + ", mobile1=" + mobile1
-				+ ", mobile2=" + mobile2 + ", mobile3=" + mobile3 + ", email=" + email + ", is_sex=" + is_sex
-				+ ", birth_year=" + birth_year + ", birth_month=" + birth_month + ", birth_day=" + birth_day
-				+ ", bank_account_owner=" + bank_account_owner + ", refund_bank_code=" + refund_bank_code
-				+ ", bank_account_no=" + bank_account_no + "]";
+		return "MemberVO [member_id=" + member_id + ", passwd=" + passwd + ", name=" + name + ", postcode1=" + postcode1
+				+ ", addr1=" + addr1 + ", addr2=" + addr2 + ", mobile1=" + mobile1 + ", mobile2=" + mobile2
+				+ ", mobile3=" + mobile3 + ", email=" + email + ", is_sex=" + is_sex + ", birth_year=" + birth_year
+				+ ", birth_month=" + birth_month + ", birth_day=" + birth_day + ", bank_account_owner="
+				+ bank_account_owner + ", refund_bank_code=" + refund_bank_code + ", bank_account_no=" + bank_account_no
+				+ ", authKey=" + authKey + ", member_auth=" + member_auth + "]";
 	}
 
 	

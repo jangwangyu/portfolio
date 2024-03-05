@@ -1,0 +1,59 @@
+.titleArea{
+	min-height: 30px;
+	margin: 10px 0 20px;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.titleArea h2{
+	display:inline-block;
+	padding: 0 0 0 0px;
+	color: #2e2e2e;
+	font-size: 14px;
+	letter-spacing: 1pt;
+	font-weight: normal;
+}
+ing, fieldset{
+	border:none;
+	vertical-align: top;
+}
+.x-member-findid{
+	border: 1px solid #d7d5d5;
+	padding: 30px 0;
+	color: #2e2e2e;
+}
+.x-member-findid .findId{
+	width: 340px;
+	margin: 0 auto;
+}
+.x-member-findid .findId h3{
+	margin: 0 0 30px 0;
+	font-size: 20px;
+	text-align: center;
+}
+
+.x-member-findid .findId p{
+	margin: 7px 0 0;
+}
+.x-member-findid .findId strong {
+	display: inline-block;
+	margin: 0 0 5px;
+	padding: 0 0 0 10px;
+	width: 140px;
+	font-weight: normal;
+	background: url(//img.echosting.cafe24.com/skin/base/common/ico_arrow.png) no-repeat 0 4px;
+}
+.x-member-findid .findId #name, .x-member-findid .findId #email{
+	width: 172px;
+}
+.base-button{
+	padding: 10px 0;
+	text-align: center;
+}
+
+input[type=text], input[type=password] {
+    height: 18px;
+    line-height: 20px;
+    padding: 2px 4px;
+    border: 1px solid #d5d5d5;
+    color: #353535;
+    font-size: 12px;

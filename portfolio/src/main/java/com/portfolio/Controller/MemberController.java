@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
@@ -52,15 +53,27 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String register(MemberVO memberVO, RedirectAttributes rttr)throws Exception{
+	public String register(MemberVO memberVO, RedirectAttributes rttr,Model model)throws Exception{
 		logger.info("register");
 		String hashedPw = BCrypt.hashpw(memberVO.getPasswd(), BCrypt.gensalt());
 		memberVO.setPasswd(hashedPw);
 		memberService.register(memberVO);
 		
-		rttr.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
+		model.addAttribute("member",memberVO);
 		
-		return "redirect:/login";
+		rttr.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
+		rttr.addAttribute("email",memberVO.getEmail());
+		rttr.addAttribute("member_id",memberVO.getMember_id());
+		
+		return "redirect:/Member/registerAuth";
+	}
+	
+	@RequestMapping(value="registerEmail",method=RequestMethod.GET)
+	public String emailConfirm(String email,Model model)throws Exception{
+		memberService.memberAuth(email);
+		model.addAttribute("email",email);
+		
+		return "/Member/registerEmail";
 	}
 	// 중복확인 버튼
 	/*
@@ -121,21 +134,27 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/loginPost",method = RequestMethod.POST)
-	public void loginPost(LoginVO loginVO, HttpSession httpSession, Model model)throws Exception{
+	public String loginPost(LoginVO loginVO, HttpSession httpSession, Model model)throws Exception{
 		logger.info("loginVO"+loginVO.getMember_id());
 		MemberVO memberVO = memberService.login(loginVO);
 		logger.info("Pw"+memberVO);
 		if(memberVO == null || !BCrypt.checkpw(loginVO.getPasswd(), memberVO.getPasswd())) {
-			return;
+			return "/Member/loginCheck";
 		}
-		
+		if(memberVO.getMember_auth() == 0) {
+			model.addAttribute("Auth",memberVO.getMember_auth());
+			return "/Member/registerReady";
+		}
 		model.addAttribute("member", memberVO);
+		
+		logger.info("Use cookie: " + loginVO.isUseCookie());
 		
 		if(loginVO.isUseCookie()) {
 			int amount = 60*60*24*7;
 			Date session_limit = new Date(System.currentTimeMillis() + (1000*amount));
 			memberService.keepLogin(memberVO.getMember_id(), httpSession.getId(), session_limit);
 		}
+		return "/Main/index";
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
@@ -150,13 +169,13 @@ public class MemberController {
 			MemberVO memberVO = (MemberVO) object;
 			session.removeAttribute("login");
 			session.invalidate();
-			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
-			if(loginCookie != null) {
-				loginCookie.setPath("/");
-				loginCookie.setMaxAge(0);
-				response.addCookie(loginCookie);
-				memberService.keepLogin(memberVO.getMember_id(),"none",new Date(0));
-			}
+			Cookie loginCookie = WebUtils.getCookie(request, "member_id");
+	        if(loginCookie != null) {
+	            loginCookie.setPath("/");
+	            loginCookie.setMaxAge(0);
+	            response.addCookie(loginCookie);
+	            memberService.keepLogin(memberVO.getMember_id(),"none",new Date(0));
+	        }
 		}
 		logger.info("URL", URL);
 		String requestURL = "/";
@@ -166,9 +185,122 @@ public class MemberController {
 		return "redirect:"+(String)URL;
 	}
 	
+	@RequestMapping(value = "/registerAuth", method= RequestMethod.GET)
+	public String loginView(HttpServletRequest request,Model model,@RequestParam("email")String email, @RequestParam(value = "member_id", required = false)String member_id)throws Exception{
+		logger.info("loginView");
+		
+		model.addAttribute("member_id",member_id);
+		model.addAttribute("email",email);
+		
+		return "/Member/registerAuth";
+	}
+	
 	@RequestMapping(value = "/errorLogin", method = RequestMethod.GET)
 	public String home() {
 		
 		return "Member/errorLogin";
 	}
+	// 마이페이지
+	@RequestMapping(value="/mypage", method=RequestMethod.GET)
+	public String mypage() throws Exception{
+		logger.info("mypage");
+		return "/Member/mypage";
+	}
+	// 정보 수정
+	@RequestMapping(value="/modify", method=RequestMethod.GET)
+	public String modify(HttpServletRequest request, Model model) throws Exception{
+	    String member_id = null;
+
+	    // 요청에 포함된 쿠키를 확인합니다.
+	    Cookie[] cookies = request.getCookies();
+	    if (cookies != null) {
+	        for (Cookie cookie : cookies) {
+	            if ("member_id".equals(cookie.getName())) {
+	                member_id = cookie.getValue();
+	                break;
+	            }
+	        }
+	    }
+	    if (member_id == null) {
+	        // member_id 쿠키가 없는 경우의 처리...
+	        throw new Exception("member_id 쿠키가 없습니다.");
+	    }
+
+	    logger.info("modify");
+
+	    model.addAttribute("member", memberService.viewMember(member_id));
+	    return "/Member/modify";
+	}
+	@RequestMapping(value="/updateMember", method=RequestMethod.POST)
+	public String updateMember(MemberVO memberVO, HttpSession session, HttpServletResponse response, RedirectAttributes rttr,HttpServletRequest request) throws Exception{
+	    logger.info("updateMember");
+	    
+	    String hashedPw = BCrypt.hashpw(memberVO.getPasswd(), BCrypt.gensalt());
+	    memberVO.setPasswd(hashedPw);
+	    memberService.updateMember(memberVO);
+	    
+	    Object URL = session.getAttribute("URL");
+		// session.invalidate();
+		Object object = session.getAttribute("login");
+	    
+	    // 쿠키 만료
+	    if(object != null) {
+			MemberVO memberVO1 = (MemberVO) object;
+			session.removeAttribute("login");
+			session.invalidate();
+			Cookie loginCookie = WebUtils.getCookie(request, "member_id");
+	        if(loginCookie != null) {
+	            loginCookie.setPath("/");
+	            loginCookie.setMaxAge(0);
+	            response.addCookie(loginCookie);
+	            memberService.keepLogin(memberVO1.getMember_id(),"none",new Date(0));
+	        }
+		}
+	    
+	    rttr.addFlashAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+	    return "/Member/login";
+	}
+
+	
+	// 아이디 찾기
+	@RequestMapping(value="/findId", method=RequestMethod.GET)
+	public String findId() throws Exception{
+		logger.info("findId");
+		return "/Member/findId";
+	}
+	
+	@RequestMapping(value="/findIdPost",method=RequestMethod.POST)
+	public String findIdPOst(MemberVO memberVO,Model model)throws Exception{
+		logger.info("email" + memberVO.getEmail());
+		
+		if(memberService.findIdCheck(memberVO.getEmail())==0){
+			model.addAttribute("msg", "이메일을 확인해주세요");
+			return "/Member/findId";
+		}else {
+			model.addAttribute("member", memberService.findId(memberVO.getEmail()));
+			return "/Member/findIdPost";
+		}
+	}
+	//비밀번호 찾기
+	@RequestMapping(value="/findPw", method=RequestMethod.GET)
+	public String findPw() throws Exception{
+		logger.info("findPw");
+		return "/Member/findPw";
+	}
+	@RequestMapping(value="/findPwPost", method=RequestMethod.POST)
+	public String findPwPost(MemberVO memberVO,Model model)throws Exception{
+		logger.info("Pw" + memberVO.getPasswd());
+		
+		if(memberService.findPwCheck(memberVO)==0) {
+			logger.info("memberPwCheck");
+			model.addAttribute("msg","아이디와 메일을 확인해주세요");
+			
+			return "/Member/findPw";
+		}else {
+			memberService.findPw(memberVO.getEmail(),memberVO.getMember_id());
+			model.addAttribute("member",memberVO.getEmail());
+			return "/Member/findPwPost";
+		}
+	}
+	
 }

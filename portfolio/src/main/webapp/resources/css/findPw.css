@@ -1,0 +1,99 @@
+.titleArea{
+	min-height: 30px;
+	margin: 10px 0 20px;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.titleArea h2{
+	display:inline-block;
+	padding: 0 0 0 0px;
+	color: #2e2e2e;
+	font-size: 14px;
+	letter-spacing: 1pt;
+	font-weight: normal;
+}
+
+.x-member-findpw{
+	border: 1px solid #e7e5e5;
+	padding: 30px 0;
+	color: #2e2e2e;
+}
+.x-member-findpw .findPw{
+	width: 340px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+ing, fieldset{
+	border:none;
+	vertical-align: top;
+}
+.base {
+	overflow: hidden;
+	text-align: left;
+}
+
+.x-member-findpw .findPw .base li {
+	margin: 5px 0;
+}
+.gBlank20{
+	display:block;
+}
+.base.typeBullet .term{
+	padding: 0 4px 0 10px;
+	background: url(//img.echosting.cafe24.com/skin/base/common/ico_arrow.png) no-repeat 0 7px;
+}
+.base.gMedium .desc {
+    padding-left: 40%;
+}
+.base .desc{
+	display: block;
+	margin: 0 0 2px;
+	padding: 0 5px 0 100px;
+	min-height: 22px;
+	line-height: 22px;
+	word-wrap: break-word;
+	word-beak: break-all;
+}
+.x-member-findpw .findPw input[type=text], .x-member-findpw .findPw input[type=password] {
+    width: 172px;
+}
+.base .desc:after{
+	content: "";
+	display:block;
+	clear: left;
+}
+input[type=text], input[type=password] {
+    height: 18px;
+    line-height: 20px;
+    padding: 2px 4px;
+    border: 1px solid #d5d5d5;
+    color: #353535;
+    font-size: 12px;
+}
+.gBlank20 {
+    display: block;
+    margin-top: 20px;
+}
+.base-button:after{
+	display:block;
+	content:"";
+	clear:both;
+}
+.base-button{
+	padding: 10px 0;
+	text-align: center;
+}
+.base.gMedium .term {
+    width: 40%;
+}
+.base .term {	
+    float: left;
+    width: 100px;
+    margin: 0 0 2px;
+    padding: 0 4px 0 0;
+    line-height: 22px;
+    -webkit-box-sizing: border-box;
+    -moz-webkit-box: border-box;
+    box-sizing: border-box;
+    font-weight: normal;
+}

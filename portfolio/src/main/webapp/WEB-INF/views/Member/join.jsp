@@ -121,7 +121,7 @@
 	                                <th scope="row">이메일</th>
 	                                <td>
 	                                    <input id="email" name="email" fw-filter="isFill&isEmail" fw-label="이메일" fw-alone="N" fw-msg placeholder value type="text">
-	                                    <span id="emailMsg"></span>
+	                                    (회원가입이 완료되면 이메일 인증이 필요합니다.)
 	                                </td>
 	                            </tr>    
 	                        </tbody>
@@ -367,7 +367,7 @@ function memberJoinAction() {
 	
 	if (!passwdCheck.test($("#passwd").val())) {
 	    alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
-	    $("passwd").focus();
+	    $("#passwd").focus();
 	    return false;
 	}
 	

@@ -1,0 +1,200 @@
+#container {
+    max-width: 100%;
+    margin-left: 315px;
+    padding: 15px;
+    zoom: 1;
+}
+hr.layout {
+    display: none;
+}
+caption{
+    display: none;
+}
+select {
+    height: 22px;
+    border: 1px solid #d5d5d5;
+    border-radius: 5px;
+}
+input, select, textarea{
+    font-size:100%;
+    font-family: "돋움",Dotum;
+    color: #353535;
+    vertical-align: middle;
+}
+input[type=text], input[type=password] {
+    height: 18px;
+    line-height: 20px;
+    padding: 2px 4px;
+    border: 1px solid #d5d5d5;
+    color: #353535;
+    font-size: 12px;
+    width: 150px;
+}
+input[type=radio] + label,input[type=checkbox] + label {
+    margin: 0 4px 0 2px;
+}
+input[type=radio],input[type=checkbox] {
+    width: 13px;
+    height: 13px;
+    border: 0;
+}
+input[type=radio] + label,input[type=checkbox] + label {
+    margin: 0 4px 0 2px;
+}
+textarea {
+    padding: 5px 6px;
+    border: 1px solid #d5d5d5;
+    line-height: 1.5;
+}
+th, td{
+    border: 0;
+    vertical-align: top;
+}
+.titleArea {
+    min-height: 30px;
+    margin: 10px 0 20px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.titleArea > h2 {
+    display: inline-block;
+    padding: 0 0 0 0px;
+    color: #2e2e2e;
+    font-size: 14px;
+    letter-spacing: 1pt;
+    font-weight: normal;
+    display: inline;
+    zoom: 1;
+}
+
+.base-table table{
+    position: relative;
+    margin: 10px 0 0;
+    border: 1px solid #d7d5d5;
+    border-top: 0;
+    color: #fff;
+    line-height: 1.5;
+}
+.base-table table::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #d7d5d5;
+}
+table {
+    width:100%;
+    border:0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.base-table th:first-child{
+    border-left: 0;
+}
+.base-table th {
+    padding: 11px 0 10px 18px;
+    border: 1px solid #dfdfdf;
+    border-bottom-width: 0;
+    color: #353535;
+    text-align: left;
+    font-weight: normal;
+    background-color: #fbfafa;
+}
+.base-table .typeWrite td{
+    padding: 8px 10px 7px;
+}
+.base-table td {
+    padding: 11px 10px 10px;
+    border-top: 1px solid #dfdfdf;
+    color: #353535;
+    vertical-align: middle;
+}
+input{
+    width: 13px;
+    height:13px;
+    border:0;
+}
+.member-join h3{
+    padding: 50px 0 10px;
+    font-size: 16px;
+    color:#2e2e2e;
+}
+.member-join .required {
+    margin: -25px 0 10px;
+    color: #353535;
+    text-align: right;
+}
+.member-join #postcode1, .member-join #postcode2 {
+    width: 50px;
+    text-align: center;
+}
+.member-join #addr1, .member-join #addr2 {
+    width: 280px;
+    margin: 5px 0 0;
+}
+.member-join #mobile1 {
+    width: 60px;
+    margin: 0 4px 0 0;
+}
+.member-join #mobile2, .member-join #mobile3 {
+    width: 50px;
+    margin: 0 4px;
+}
+.member-join #email1 {
+    margin-right: 4px;
+}
+
+.member-join #email2 {
+    margin: 0 4px;
+}
+.member-join #birth_year {
+    width: 60px;
+    margin: 0 4px 0 0;
+}
+.member-join #birth_month, .member-join #birth_day {
+    width: 30px;
+    margin: 0 4px 0 0;
+}
+.typeBullet {
+    overflow: hidden;
+    text-align: left;
+}
+.typeBullet dt {
+    padding: 0 4px 0 10px;
+    float: left;
+    line-height: 22px;
+
+}
+.typeBullet dd {
+    display: block;
+    margin: 0 0 2px;
+    padding: 0 5px 0 100px;
+    min-height: 22px;
+    line-height: 22px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.typeBullet dd::after {
+    content: "";
+    display: block;
+    clear: left;
+}
+.join-button {
+    padding: 10px 0;
+    text-align: center;
+}
+.join-button a > img {
+    width: 150px;
+}

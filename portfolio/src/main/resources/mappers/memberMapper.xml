@@ -85,4 +85,79 @@
 		WHERE session_key = #{value}
 	</select>
 	
+	<!-- 아이디 찾기 -->
+	<select id="findId" resultType="com.portfolio.VO.MemberVO">
+		select * from member where email = #{email}
+	</select>
+	
+	<select id="findIdCheck" resultType="int">
+		select count(*) from member where email = #{email}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<update id="findPw">
+		update member set passwd = #{passwd} where email = #{email} and member_id = #{member_id}
+	</update>
+	<select id="findPwCheck" resultType="int">
+		select count(*) from member where email = #{email} and member_id = #{member_id}
+	</select>
+	<!-- 메일인증 -->
+	<insert id="createAuthKey">
+		insert into member_auth values(#{email}, #{authKey})
+	</insert>
+	
+	<update id="memberAuth">
+		<![CDATA[
+			update member set member_auth = 1 
+			where (select count(*) 
+			from member_auth where email = #{email}) > 0
+		]]>
+	</update>
+	<!-- 정보조회 -->
+	<select id="viewMember" resultType="com.portfolio.VO.MemberVO">
+		select
+			member_id,
+			passwd, 
+			name, 
+			postcode1, 
+			addr1, 
+			addr2, 
+			mobile1, 
+			mobile2, 
+			mobile3, 
+			email, 
+			is_sex, 
+			birth_year, 
+			birth_month, 
+			birth_day, 
+			bank_account_owner, 
+			refund_bank_code, 
+			bank_account_no
+		from member
+		where member_id = #{member_id}
+	</select>
+	
+	<!-- 정보수정 -->
+	<update id="updateMember">
+		update MEMBER 
+		SET	passwd = #{passwd},
+			name = #{name},
+			postcode1 = #{postcode1},
+			addr1 = #{addr1},
+			addr2 = #{addr2},
+			mobile1 = #{mobile1},
+			mobile2 = #{mobile2},
+			mobile3 = #{mobile3},
+			email = #{email},
+			is_sex = #{is_sex},
+			birth_year = #{birth_year},
+			birth_month = #{birth_month},
+			birth_day = #{birth_day}, 
+			bank_account_owner = #{bank_account_owner},
+			refund_bank_code = #{refund_bank_code},
+			bank_account_no = #{bank_account_no}
+		where
+			member_id = #{member_id}
+	</update>
+	
 </mapper>

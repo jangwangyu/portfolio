@@ -231,8 +231,8 @@ body {
           </form>
           <ul id="sub_menu">
             <li><a href="/Member/join">회원 가입</a></li>
-            <li><a href="#">아이디 찾기</a></li>
-            <li><a href="#">비밀번호 찾기</a></li>
+            <li><a href="/Member/findId">아이디 찾기</a></li>
+            <li><a href="/Member/findPw">비밀번호 찾기</a></li>
           </ul>
         </div>
         <div id="social">

@@ -11,6 +11,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.portfolio.VO.MemberVO;
+
 public class loginInterceptor extends HandlerInterceptorAdapter {
 
 	private static final String LOGIN = "login";
@@ -25,15 +27,21 @@ public class loginInterceptor extends HandlerInterceptorAdapter {
 		Object memberVO = modelMap.get("member");
 		
 		if(memberVO != null) {
-			logger.info("new login success");
-			httpSession.setAttribute(LOGIN, memberVO);
+		    logger.info("new login success");
+		    httpSession.setAttribute(LOGIN, memberVO);
+		    
+		    MemberVO member = (MemberVO) memberVO;
+		    Cookie idCookie = new Cookie("member_id", member.getMember_id());
+		    idCookie.setPath("/");
+		    idCookie.setMaxAge(60*60*24*7); // 7일
+		    response.addCookie(idCookie);
+
 			// response.sendRedirect("/");
-			if(request.getParameter("userCookie") != null) {
+			if(request.getParameter("useCookie") != null) {
 				logger.info("remember me..");
-				Cookie loginCookie = new Cookie("loginCookie",httpSession.getId());
-				loginCookie.setPath("/");
-				loginCookie.setMaxAge(60*60*24*7);
-				response.addCookie(loginCookie);
+				idCookie.setPath("/");
+				idCookie.setMaxAge(60*60*24*7); // 7일
+				response.addCookie(idCookie);
 			}
 			
 			

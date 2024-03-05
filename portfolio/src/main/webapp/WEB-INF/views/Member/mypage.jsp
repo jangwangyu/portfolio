@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="layout.css" rel="stylesheet" type="text/css" />
-    <link href="mypage.css" rel="stylesheet" type="text/css" />
+    <link href="/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="/css/mypage.css" rel="stylesheet" type="text/css" />
 </head>
 <body id="main">
     <div id="wrap">
@@ -103,25 +103,25 @@
             <div id="myshopMain" class="x-myshop x-myshop-main">
                 <div class="shopMain order">
                     <h3>
-                        <a href="/order.html">
+                        <a href="/order">
                             <strong>order</strong>
                             주문내역 조회
                         </a>
                     </h3>
                     <p>
-                        <a href="/order.html">고객님께서 주문하신 상품의 주문내역을 확인하실 수 있습니다.
+                        <a href="/order">고객님께서 주문하신 상품의 주문내역을 확인하실 수 있습니다.
                         <br>비회원의 경우, 주문서의 주문번호와 비밀번호로 주문조회가 가능합니다.
                         </a>
                     </p>
                 </div>
                 <div class="shopMain profile">
                     <h3>
-                        <a href="/modify.html">
+                        <a href="/Member/modify">
                         <strong>profile</strong>
                         회원 정보</a>
                     </h3>
                     <p>
-                        <a href="/modify.html">회원이신 고객님의 개인정보를 관리하는 공간입니다.
+                        <a href="/Member/modify">회원이신 고객님의 개인정보를 관리하는 공간입니다.
                             <br>개인정보를 최신 정보로 유지하시면 보다 간편히 쇼핑을 즐기실 수 있습니다.
                         </a>
                     </p>

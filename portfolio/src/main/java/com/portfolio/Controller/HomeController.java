@@ -19,14 +19,8 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpServletRequest request) {
+	public String home(Locale locale) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
-		if(null != inputFlashMap) {
-		    
-		    model.addAttribute("msg",(String) inputFlashMap.get("msg"));
-		    
-		}
 		
 		return "Main/index";
 	}

@@ -1,0 +1,170 @@
+.titleArea{
+    min-height: 30px;
+    margin: 10px 0 20px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.titleArea h2{
+    display: inline-block;
+    padding: 0 0 0 0px;
+    color: #2e2e2e;
+    font-size: 14px;
+    letter-spacing: 1pt;
+    font-weight: normal;
+}
+.base-box.gHalf{
+    position: relative;
+    padding: 20px 0;
+}
+.base-box.gHalf::before {
+    position: absolute;
+    top:0;
+    left: 50%;
+    display: block;
+    content: "";
+    width: 1px;
+    height: 100%;
+    background-color: #e6e6e6;
+}
+.base-box{
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid #e8e8e8;
+    color: #404040;
+    overflow: hidden;
+}
+.x-myshop-asyncbankbook ul li{
+    float: left;
+    margin: 5px 0;
+    padding:  0 45px;
+    width: 50%;
+    height:  20px;
+    font-size: 12px;
+    line-height: 1.6;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+.x-myshop-asyncbankbook .title{
+    float: left;
+    width: 40%;
+    padding: 0 0 0 10px;
+    font-weight: normal;
+    background: url(//img.echosting.cafe24.com/skin/base/common/ico_arrow.png) no-repeat 0 6px;
+    box-sizing: border-box;
+}
+.x-myshop-asyncbankbook .use{
+    color:#008bcc;
+}
+.x-myshop-asyncbankbook .data {
+    float: left;
+    width: 50%;
+    padding: 0 10px 0 10px;
+    text-align: right;
+    box-sizing: border-box;
+}
+.x-myshop-asyncbankbook a.button {
+    float:right;
+}
+.x-myshop-orderstate{
+    margin: 20px 0 0;
+    border: 1px solid #777
+}
+.x-myshop-orderstate .title{
+    padding: 11px 21px;
+    margin: 0;
+    border-bottom: 1px solid #e9e9e9;
+    background: #f6f6f6;
+}
+.x-myshop-orderstate .title h3{
+    padding: 0;
+    font-size: 14px;
+    color: #000;
+}
+.x-myshop-orderstate .desc{
+    padding: 0 0 0 4px;
+    font-weight: normal;
+    font-size: 11px;
+    color: #8f8f8f;
+}
+.x-myshop-orderstate .state{
+    overflow: hidden;
+    padding: 19px 0;
+}
+.x-myshop-orderstate .order{
+    float: left;
+    width: 80%;
+}
+.x-myshop-orderstate .order li{
+    float: left;
+    width: 25%;
+    padding: 0 0 4px;
+    margin: 0 -1px 0 0;
+    border-right: 1px dotted #c9c7ca;
+    text-align: center;
+}
+.x-myshop-orderstate .order li strong {
+    display: block;
+    margin: 2px 0 7px;
+    font-size: 14px;
+    color: #353535;
+}
+.x-myshop-orderstate .order .count{
+    font-weight: bold;
+    font-size: 24px;
+    color: #008bcc;
+}
+.x-myshop-orderstate .cs{
+    float: left;
+    width: 20%;
+}
+.x-myshop-orderstate .cs li{
+    margin: 0 0 5px 57px;
+    letter-spacing: 0.04em;
+    word-spacing: 4px;
+}
+.x-myshop-orderstate .cs .icoDot{
+    display: inline-block;
+    width: 2px;
+    height: 2px;
+    margin: 6px 0 0 0;
+    background: #4d4d4d;
+    vertical-align: top;
+
+}
+.x-myshop-orderstate .cs .count{
+    padding: 0 0 0 4px;
+    font-weight: bold;
+    color: #008bcc;
+}
+#myshopMain{
+    margin: 30px 0 0;
+    border-top: 3px solid #333;
+    border-bottom: 3px solid #333;
+}
+#myshopMain .shopMain.order {
+    background-image: url(//img.echosting.cafe24.com/skin/base/myshop/bg_myshop1.gif);
+}
+#myshopMain .shopMain{
+    height: 90px;
+    padding: 27px 0 0 30px;
+    border-bottom: 1px solid #e9e9e9;
+    background: url(//img.echosting.cafe24.com/skin/base/myshop/bg_myshop1.gif) no-repeat 100% 0;
+}
+#myshopMain .shopMain h3{
+    padding: 0 0 5px;
+    font-size: 12px;
+    color: #333;
+    font-weight: normal;
+}
+#myshopMain .shopMain p a {
+    font-size: 12px;
+    line-height: 18px;
+    color: #8f8f8f;
+}
+a{
+    color: #000;
+}
+#myshopMain .shopMain h3 strong {
+    font-size: 18px;
+    padding: 0 8px 0 0;
+}

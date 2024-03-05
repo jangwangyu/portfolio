@@ -1,0 +1,34 @@
+.titleArea{
+	min-height: 30px;
+	margin: 10px 0 20px;
+	border-bottom: 1px solid #e8e8e8;
+}
+.titleArea h2{
+	display: inline-block;
+	padding: 0 0 0 0px;
+	color: #2e2e2e;
+	font-size: 14px;
+	letter-spacing: 1pt;
+	font-weight: normal;
+}
+.x-member-findidresult .findId{
+	width: 500px;
+	margin: 0 auto;
+}
+.base.typeMember.gMessage{
+	border-width: 1px;
+	border-color: #d7d5d5;
+}
+.x-member-findidresult .findId .base{
+	text-align: center;
+}
+.base.typeMember{
+	padding: 0;
+}
+.base{
+	padding: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 5px solid #e8e8e8;
+	color: #404040;
+}

@@ -106,4 +106,13 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlsession.update(namespace + ".updateMember", memberVO);
 	}
 	
+	// 탈퇴
+	public void delete(String member_id)throws Exception{
+		sqlsession.delete(namespace + ".delete" ,member_id);
+	}
+	@Override
+	public String pwCheck(String member_id)throws Exception{
+		return sqlsession.selectOne(namespace + ".pwCheck", member_id);
+	}
+	
 }

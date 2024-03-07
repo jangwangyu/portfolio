@@ -160,4 +160,12 @@
 			member_id = #{member_id}
 	</update>
 	
+	<!-- 탈퇴 -->
+	<delete id="delete">
+		delete from member where member_id = #{member_id}
+	</delete>
+	<select id="pwCheck" resultType="String">
+		select passwd from member where member_id = #{member_d}
+	</select>
+	
 </mapper>

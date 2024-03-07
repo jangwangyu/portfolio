@@ -119,4 +119,12 @@ public class MemberServiceImpl implements MemberService {
 
         memberDAO.updateMember(memberVO);
 	}	
+	// 탈퇴
+	public void delete(String member_id)throws Exception{
+		memberDAO.delete(member_id);
+	}
+	@Override
+	public String pwCheck(String member_id)throws Exception{
+		return memberDAO.pwCheck(member_id);
+	}
 }

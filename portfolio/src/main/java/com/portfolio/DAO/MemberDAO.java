@@ -39,5 +39,9 @@ public interface MemberDAO {
 	
 	// 정보수정
 	public void updateMember(MemberVO memberVO)throws Exception;
+	
+	// 탈퇴
+	public void delete(String member_id)throws Exception;
+	public String pwCheck(String member_id)throws Exception;
 
 }

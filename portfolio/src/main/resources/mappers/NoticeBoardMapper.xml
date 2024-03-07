@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.portfolio.NoticeBoardMapper">
+	<!-- 목록 조회 -->
+	<select id="listAll" resultType="com.portfolio.VO.NoticeBoardVO">
+		select
+			bno,
+			title,
+			content,
+			writer,
+			regdate,
+			viewcnt
+		from
+			Notice_Board
+		order by
+			bno desc,
+			regdate desc
+	</select>
+	<!-- 작성 -->
+	<insert id="insert">
+		insert into Notice_Board(
+			bno,
+			title,
+			content,
+			writer
+		) values(
+			(select nvl(max(bno)+1,1)from Notice_Board),
+			#{title},
+			#{content},
+			#{writer}
+		)
+	</insert>
+	<!-- 상세 -->
+	<select id="view" resultType="com.portfolio.VO.NoticeBoardVO">
+		select * from Notice_Board
+		where bno = #{bno}
+	</select>
+	<!-- 조회수 증가 -->
+	<update id="increaseViewcnt">
+		update Notice_Board SET viewcnt = viewcnt + 1
+		where bno = #{bno}
+	</update>
+	<!-- 수정 -->
+	<update id="updateArticle">
+		update Notice_Board SET
+			title = #{title},
+			content = #{content},
+			writer = #{writer}
+		where bno = #{bno}
+	</update>
+	<!-- 삭제 -->
+	<delete id="deleteArticle">
+		delete from Notice_Board
+		where bno = #{bno}
+	</delete>
+</mapper>

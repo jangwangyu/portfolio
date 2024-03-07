@@ -239,7 +239,6 @@ public class MemberController {
 	    memberVO.setPasswd(hashedPw);
 	    memberService.updateMember(memberVO);
 	    
-	    Object URL = session.getAttribute("URL");
 		// session.invalidate();
 		Object object = session.getAttribute("login");
 	    
@@ -258,7 +257,7 @@ public class MemberController {
 		}
 	    
 	    rttr.addFlashAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
-	    return "/Member/login";
+	    return "redirect:/Member/login";
 	}
 
 	
@@ -301,6 +300,47 @@ public class MemberController {
 			model.addAttribute("member",memberVO.getEmail());
 			return "/Member/findPwPost";
 		}
+	}
+	
+	// 탈퇴
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String delete() throws Exception{
+		return "/Member/delete";
+	}
+	@RequestMapping(value="/deletePost", method=RequestMethod.POST)
+	public String deletePost(String member_id,RedirectAttributes rttr,HttpSession session,HttpServletResponse response,HttpServletRequest request) throws Exception{
+		memberService.delete(member_id);
+		
+		Object object = session.getAttribute("login");
+	    
+	    // 쿠키 만료
+	    if(object != null) {
+			MemberVO memberVO1 = (MemberVO) object;
+			session.removeAttribute("login");
+			session.invalidate();
+			Cookie loginCookie = WebUtils.getCookie(request, "member_id");
+	        if(loginCookie != null) {
+	            loginCookie.setPath("/");
+	            loginCookie.setMaxAge(0);
+	            response.addCookie(loginCookie);
+	            memberService.keepLogin(memberVO1.getMember_id(),"none",new Date(0));
+	        }
+		}
+	    
+		rttr.addFlashAttribute("msg", "이용해주셔서 감사합니다.");
+		return "redirect:/Member/login";
+	}
+	
+	@RequestMapping(value="/pwCheck" , method=RequestMethod.POST)
+	@ResponseBody
+	public int pwCheck(MemberVO memberVO) throws Exception{
+		String memberPw = memberService.pwCheck(memberVO.getMember_id());
+		
+		if(memberVO == null || !BCrypt.checkpw(memberVO.getPasswd(), memberPw)) {
+			return 0;
+		}
+		
+		return 1;
 	}
 	
 }

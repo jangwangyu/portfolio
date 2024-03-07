@@ -9,6 +9,14 @@
 <link href="/css/layout.css" rel="stylesheet" type="text/css" />
 	<link href="/css/findIdPost.css" rel="stylesheet" type="text/css" />
 </head>
+<script>
+	window.onload = function() {
+	    var msg = "${msg}";
+	    if (msg) {
+	        alert(msg);
+	    }
+	};
+</script>
 <body id="main">
 	<div id="wrap">
 	<jsp:include page="/WEB-INF/views/Interface/interface.jsp"/>

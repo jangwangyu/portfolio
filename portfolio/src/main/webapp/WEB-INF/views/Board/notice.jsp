@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="layout.css" rel="stylesheet" type="text/css" />
-    <link href="notice.css" rel="stylesheet" type="text/css" />
+    <link href="/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="/css/notice.css" rel="stylesheet" type="text/css" />
 </head>
 <body id="main">
     <div id="wrap">
@@ -39,27 +41,19 @@
                             </tr>
                         </thead>
                         <tbody class="x-board x-board-notice-1002 x-board-notice center">
+                        <c:forEach var="row" items="${list }">
                             <!-- $count = 10 -->
                             <tr style="background-color: #FFFFFF; color:#555555;" class="x-record">
                                 <td>공지</td>
                                 <td class="subject left txtBreak">
-                                    <strong><a href="#">공지사항</a></strong>
+                                    <strong><a href="#">${row.title }</a></strong>
                                 </td>
-                                <td>관리자</td>
+                                <td>${row.writer}</td>
                                 <td>
-                                    <span class="txtNum">2024-00-00</span>
+                                    <span class="txtNum"><fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
                                 </td>
                             </tr>
-                            <tr style="background-color: #FFFFFF; color:#555555;" class="x-record">
-                                <td>공지</td>
-                                <td class="subject left txtBreak">
-                                    <strong><a href="#">공지사항</a></strong>
-                                </td>
-                                <td>관리자</td>
-                                <td>
-                                    <span class="txtNum">2024-00-00</span>
-                                </td>
-                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                     <p class="x-board message">검색결과가 없습니다.</p>
@@ -72,7 +66,7 @@
                         <fieldset class="boardSearch">
                             <legend>게시물 검색</legend>
                             <p>
-                                <select id="search_date" name="search_date" fw-filter fw-label fw-msg>
+                                <select id="search_date" name="search_date">
                                     <option value="week">일주일</option>
                                     <option value="month">한달</option>
                                     <option value="month3">세달</option>
@@ -85,7 +79,7 @@
                                     <option value="member_id">아이디</option>
                                     <option value="nick_name">별명</option>
                                 </select>
-                                <input id="search" class="inputTypeText" placeholder value="" type="text">
+                                <input id="search" class="inputTypeText" value="" type="text">
                                 <a href="#none" onclick="BOARD.form_submit('boardSearchForm');">
                                     <img src="//img.echosting.cafe24.com/skin/base_ko_KR/board/btn_find.gif" alt="찾기">
                                 </a>

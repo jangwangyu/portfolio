@@ -137,7 +137,7 @@
                                     <td>
                                     	<dl class="typeBullet">
 	                                        <dt>예금주</dt>
-	                                        <dd><input id="bank_account_owner" name="bank_account_owner" fw-filter="isFill" fw-label="예금주" fw-msg="" class="inputTypeText" placeholder="" autocomplete="off" value="" type="text"></dd>
+	                                        <dd><input id="bank_account_owner" name="bank_account_owner" class="inputTypeText" autocomplete="off" value="${member.bank_account_owner }" type="text"></dd>
 	                                        <dt>은행명</dt>
 	                                        <dd><select id="refund_bank_code" name="refund_bank_code" fw-filter="isFill" fw-label="은행명" fw-msg="">
 	                                            <option value="" selected="selected">- 은행선택 -</option>
@@ -211,7 +211,7 @@
 	                                            </select>
 	                                        </dd>
 	                                        <dt>계좌번호</dt>
-	                                        <dd><input id="bank_account_no" name="bank_account_no" fw-filter="isFill" fw-label="계좌번호" fw-msg="" class="inputTypeText" placeholder="" autocomplete="off" value="" type="text">
+	                                        <dd><input id="bank_account_no" name="bank_account_no" class="inputTypeText" value="${member.bank_account_no }" type="text">
 	                                            ('-'와 숫자만 입력해주세요.)
 	                                        </dd>
 	                                    </dl>
@@ -229,9 +229,9 @@
 	                        <img src="//img.echosting.cafe24.com/skin/base_ko_KR/member/btn_modify_cancel.gif" alt="취소">
 	                    </a>
 	                    <span class="gRight">
-	                        <button>
+	                        <a href ="/Member/delete">
 	                            <img src="//img.echosting.cafe24.com/skin/base_ko_KR/member/btn_modify_out.gif" alt="회원탈퇴">
-	                        </button>
+	                        </a>
 	                    </span>
 	                </div>
 	            </form>

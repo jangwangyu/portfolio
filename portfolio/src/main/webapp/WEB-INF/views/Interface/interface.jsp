@@ -16,7 +16,7 @@
                  <c:if test="${not empty login}">
                  	<li><a href="${path}/Member/logout" class="-ms">LOGOUT</a></li>
                  </c:if>
-                    <li><a href="../Member/join" class="-ms">JOIN</a></li>
+                    <li><a href="../Member/modify" class="-ms">MODIFY</a></li>
                     <li><a href="../Member/cart" class="-ms">CART</a></li>
                     <li><a href="../Member/order" class="-ms">ORDER</a></li>
                     <li><a href="../Member/mypage" class="-ms">MYPAGE</a></li>
@@ -47,7 +47,7 @@
                 <div class="category2">
                     <h2>COMMUNITY</h2>
                     <ul>
-                        <li><a href="notice.html">NOTICE</a></li>
+                        <li><a href="/Board/notice">NOTICE</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Q&A</a></li>
                         <li><a href="#">REVIEW</a></li>

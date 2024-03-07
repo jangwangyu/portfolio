@@ -255,4 +255,12 @@ body {
       </div>
     </div>
   </body>
+<script>
+	window.onload = function() {
+	    var msg = "${msg}";
+	    if (msg) {
+	        alert(msg);
+	    }
+	};
+</script>
 </html>

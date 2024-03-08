@@ -1,0 +1,16 @@
+.base-table tbody th {
+    padding: 11px 0 10px 18px;
+    border: 1px solid #dfdfdf;
+    border-bottom-width: 0;
+    color: #353535;
+    text-align: left;
+    font-weight: normal;
+    background-color: #fbfafa;
+}
+.base-table #title {
+    width:3 90px;
+}
+.gRight{
+	float:right;
+	text-align:right;
+}

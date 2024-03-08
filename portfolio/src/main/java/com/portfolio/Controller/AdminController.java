@@ -18,43 +18,50 @@ import com.portfolio.Service.NoticeBoardService;
 import com.portfolio.VO.NoticeBoardVO;
 
 @Controller
-@RequestMapping("/Board")
-public class NoticeBoardController {
-
-	private static final Logger logger = LoggerFactory.getLogger(NoticeBoardController.class);
+@RequestMapping("/Admin")
+public class AdminController {
 	
-	//의존관계 주입 -> NoticeBoardServiceImpl 생성
-	//Ioc 의존관계 역전
+private static final Logger logger = LoggerFactory.getLogger(NoticeBoardController.class);
+	
 	@Inject
 	NoticeBoardService boardService;
 	
+	@RequestMapping(value="/adminLogin", method=RequestMethod.GET)
+	public String adminLogin() {
+		return "/Admin/adminLogin";
+	}
+	
+	@RequestMapping(value="/interface", method=RequestMethod.GET)
+	public String interfacee() {
+		return "/Admin/interface";
+	}
 	// 목록
-	@RequestMapping("/notice")
+	@RequestMapping("/adminNotice")
 	public ModelAndView list() throws Exception{
 		logger.info("notice");
 		List<NoticeBoardVO> list = boardService.listAll();
 		// ModelAndView 모델과 뷰
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/Board/notice"); // 뷰를 NoticeBoard로 설정
+		mav.setViewName("/Admin/adminNotice"); // 뷰를 NoticeBoard로 설정
 		mav.addObject("list",list); // 데이터 저장
 		return mav; // NoticeBoard로 list 전달
 	}
 	
 	// 작성
-	@RequestMapping(value="/write", method=RequestMethod.GET)
+	@RequestMapping(value="/adminNoticeWrite", method=RequestMethod.GET)
 	public String write() {
 		logger.info("writer");
-		return "/Board/write";
+		return "/Admin/adminNoticeWrite";
 	}
-	@RequestMapping(value="/writePost", method=RequestMethod.POST)
+	@RequestMapping(value="/adminNoticeWritePost", method=RequestMethod.POST)
 	public String insert(@ModelAttribute NoticeBoardVO vo)throws Exception{
 		logger.info("writerPost");
 		boardService.create(vo);
-		return "redirect:/Board/notice";
+		return "redirect:/Admin/adminNotice";
 	}
 	
 	// 내용 조회, 조회수 증가
-	@RequestMapping(value="/view",method=RequestMethod.GET)
+	@RequestMapping(value="/adminNoticeView",method=RequestMethod.GET)
 	public ModelAndView view(@RequestParam int bno, HttpSession session)throws Exception{
 		logger.info("view");
 		// 증가처리
@@ -66,18 +73,18 @@ public class NoticeBoardController {
 	}
 	
 	// 수정
-	@RequestMapping(value="/update",method=RequestMethod.POST)
+	@RequestMapping(value="/adminNoticeUpdate",method=RequestMethod.POST)
 	public String update(@ModelAttribute NoticeBoardVO vo)throws Exception{
 		logger.info("update");
 		boardService.update(vo);
-		return "redirect:/Board/notice";
+		return "redirect:/Admin/adminNotice";
 	}
 	
 	// 삭제
-	@RequestMapping("/delete")
+	@RequestMapping("/adminNoticeDelete")
 	public String delete(@RequestParam int bno) throws Exception{
 		logger.info("delete");
 		boardService.delete(bno);
-		return "redirect:/Board/notice";
+		return "redirect:/Admin/adminNotice";
 	}
 }

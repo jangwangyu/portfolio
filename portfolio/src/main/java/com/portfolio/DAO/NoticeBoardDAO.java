@@ -11,7 +11,7 @@ public interface NoticeBoardDAO {
 	// 상세보기
 	public NoticeBoardVO read(int bno);
 	// 수정
-	public void update(NoticeBoardVO vo)throws Exception;
+	public void updateArticle(NoticeBoardVO vo)throws Exception;
 	// 삭제
 	public void delete(int bno)throws Exception;
 	// 목록

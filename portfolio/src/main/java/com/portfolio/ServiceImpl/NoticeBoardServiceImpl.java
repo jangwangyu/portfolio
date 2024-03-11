@@ -45,8 +45,8 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	}
 
 	@Override
-	public void update(NoticeBoardVO vo) throws Exception {
-		dao.update(vo);
+	public void updateArticle(NoticeBoardVO vo) throws Exception {
+		dao.updateArticle(vo);
 	}
 
 	@Override

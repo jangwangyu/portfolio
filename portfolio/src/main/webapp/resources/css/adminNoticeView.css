@@ -101,3 +101,13 @@ strong {
 .view {
     word-wrap: break-word;
 }
+.base-button {
+    display: flex; /* Flexbox 레이아웃을 사용하도록 설정 */
+    justify-content: space-between; /* 양 끝에 있는 요소들 사이에 공간을 균등하게 분배 */
+    align-items: center; /* 수직 방향에서 중앙 정렬 */
+}
+
+.gLeft, .gRight {
+    display: flex; /* Flexbox 레이아웃을 적용 */
+    align-items: center; /* 수직 방향에서 항목들을 중앙에 정렬 */
+}

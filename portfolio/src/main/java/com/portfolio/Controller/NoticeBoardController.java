@@ -39,20 +39,6 @@ public class NoticeBoardController {
 		mav.addObject("list",list); // 데이터 저장
 		return mav; // NoticeBoard로 list 전달
 	}
-	
-	// 작성
-	@RequestMapping(value="/write", method=RequestMethod.GET)
-	public String write() {
-		logger.info("writer");
-		return "/Board/write";
-	}
-	@RequestMapping(value="/writePost", method=RequestMethod.POST)
-	public String insert(@ModelAttribute NoticeBoardVO vo)throws Exception{
-		logger.info("writerPost");
-		boardService.create(vo);
-		return "redirect:/Board/notice";
-	}
-	
 	// 내용 조회, 조회수 증가
 	@RequestMapping(value="/noticeView",method=RequestMethod.GET)
 	public ModelAndView view(@RequestParam int bno, HttpSession session)throws Exception{
@@ -63,21 +49,5 @@ public class NoticeBoardController {
 		mav.setViewName("/Board/noticeView");
 		mav.addObject("dto",boardService.read(bno));
 		return mav;
-	}
-	
-	// 수정
-	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public String update(@ModelAttribute NoticeBoardVO vo)throws Exception{
-		logger.info("update");
-		boardService.update(vo);
-		return "redirect:/Board/notice";
-	}
-	
-	// 삭제
-	@RequestMapping("/delete")
-	public String delete(@RequestParam int bno) throws Exception{
-		logger.info("delete");
-		boardService.delete(bno);
-		return "redirect:/Board/notice";
 	}
 }

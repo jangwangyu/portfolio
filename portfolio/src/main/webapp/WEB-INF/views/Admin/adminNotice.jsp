@@ -50,7 +50,7 @@
                                 </td>
                                 <td>${row.writer}</td>
                                 <td>
-                                    <span class="txtNum"><fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+                                    <span class="txtNum"><fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd"/></span>
                                 </td>
                             </tr>
                         </c:forEach>

@@ -5,8 +5,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.portfolio.Controller.NoticeBoardController;
 import com.portfolio.DAO.NoticeBoardDAO;
 import com.portfolio.VO.NoticeBoardVO;
 
@@ -17,6 +20,8 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 	SqlSession sqlsession;
 	
 	private static String namespace = "com.portfolio.NoticeBoardMapper";
+	
+	private static final Logger logger = LoggerFactory.getLogger(NoticeBoardDAOImpl.class);
 	
 	@Override
 	public void create(NoticeBoardVO vo) throws Exception {
@@ -30,7 +35,8 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 	}
 
 	@Override
-	public void update(NoticeBoardVO vo) throws Exception {
+	public void updateArticle(NoticeBoardVO vo) throws Exception {
+		logger.info("bno: " + vo.getBno()); // bno 값 로그 출력
 		sqlsession.update(namespace + ".updateArticle", vo);
 		
 	}

@@ -55,11 +55,33 @@
     				<div class="base-button">
     					<span class="gLeft">
 			                <a href="/Admin/adminNotice"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/board/btn_list.gif" alt="목록"></a>
+			                <a href="/Admin/adminNoticeModify?bno=${dto.bno}"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/board/btn_modify.gif" alt="수정"></a>
 			            </span>
+			            <form id="deleteForm" action="/Admin/adminNoticeDelete" method="post">
+				            <input type="hidden" name="bno" value="${dto.bno}">
+							<span class="gRight">
+								<a href="#" onclick="return confirmDelete();">
+									<img src="//img.echosting.cafe24.com/skin/base_ko_KR/board/btn_delete.gif" alt="삭제">
+								</a>
+							</span>
+						</form>
     				</div>
     			</div>
     			
     		</div>    
     </div>
 </body>
+<script>
+function confirmDelete() {
+    // '삭제하시겠습니까?' 라는 확인 창을 사용자에게 보여줍니다.
+    var confirmResponse = confirm("삭제하시겠습니까?");
+    if (confirmResponse) {
+        // 사용자가 '확인'을 클릭한 경우, form을 제출합니다.
+        document.getElementById('deleteForm').submit();
+        alert("삭제 되었습니다.");
+    }
+    // 사용자가 '취소'를 클릭한 경우, 아무 작업도 수행하지 않습니다.
+    return false;
+}
+</script>
 </html>

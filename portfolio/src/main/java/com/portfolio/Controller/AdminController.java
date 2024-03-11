@@ -67,7 +67,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoticeBoardControll
 		// 증가처리
 		boardService.increaseViewcnt(bno, session);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("Board/view");
+		mav.setViewName("Admin/adminNoticeView");
 		mav.addObject("dto",boardService.read(bno));
 		return mav;
 	}

@@ -1,0 +1,104 @@
+#container {
+    max-width: 100%;
+    margin-left: 315px;
+    padding: 15px;
+    *zoom: 1;
+}
+.title{
+	min-height: 30px;
+	margin: 10px 0 20px;
+	border-bottom: 1px solid #e8e8e8;
+}
+.title h2{
+	display:inline-block;
+	padding: 0 0 0 12px;
+	color: #2e2e2e;
+	font-size: 16px;
+	background: url(//img.echosting.cafe24.com/skin/base/layout/ico_heading.gif) 0 50% no-repeat;
+}
+.title p{
+	display:inline-block;
+	margin: 0 0 0  6px;
+	padding: 0 0 0 10px;
+	color: #939393;
+	vertical-align: middle;
+	background: url(//img.echosting.cafe24.com/skin/base/layout/ico_bar.gif) no-repeat 0 0;
+}
+.base-table table{
+	position: relative;
+	margin: 10px 0 0;
+	border: 1px solid #d7d5d5;
+	border-top:0;
+	color: #fff;
+	line-height: 1.5;
+}
+table{
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.base-table table:before{
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #d7d5d5;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.base-table th:first-child {
+    border-left: 0;
+}
+.base-table.typeWrite td {
+    padding: 8px 10px 7px;
+}
+.base-table tbody th {
+    padding: 11px 0 10px 18px;
+    border: 1px solid #dfdfdf;
+    border-bottom-width: 0;
+    color: #353535;
+    text-align: left;
+    font-weight: normal;
+    background-color: #fbfafa;
+}
+.base-table td {
+    padding: 11px 10px 10px;
+    border-top: 1px solid #dfdfdf;
+    color: #353535;
+    vertical-align: middle;
+}
+.x-board-read .base-table .etcArea li {
+    display: inline-block;
+    margin: 0 0 9px;
+    padding: 8px 20px 10px;
+    vertical-align: top;
+    line-height: 22px;
+    color: #666;
+}
+strong {
+    font-weight: bold;
+}
+.txtNum {
+    font-size: 11px;
+    color: #939393;
+}
+.x-board-read .base-table .detail {
+    padding: 30px 20px;
+    border-top: 1px solid #eaeaea;
+    margin: -9px 0 0;
+    word-break: break-all;
+    line-height: normal;
+}
+.view {
+    word-wrap: break-word;
+}

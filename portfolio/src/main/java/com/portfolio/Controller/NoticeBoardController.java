@@ -54,13 +54,13 @@ public class NoticeBoardController {
 	}
 	
 	// 내용 조회, 조회수 증가
-	@RequestMapping(value="/view",method=RequestMethod.GET)
+	@RequestMapping(value="/noticeView",method=RequestMethod.GET)
 	public ModelAndView view(@RequestParam int bno, HttpSession session)throws Exception{
 		logger.info("view");
 		// 증가처리
 		boardService.increaseViewcnt(bno, session);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("Board/view");
+		mav.setViewName("/Board/noticeView");
 		mav.addObject("dto",boardService.read(bno));
 		return mav;
 	}

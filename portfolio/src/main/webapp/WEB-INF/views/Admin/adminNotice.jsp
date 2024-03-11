@@ -46,7 +46,7 @@
                             <tr style="background-color: #FFFFFF; color:#555555;" class="x-record">
                                 <td>공지</td>
                                 <td class="subject left txtBreak">
-                                    <strong><a href="#">${row.title }</a></strong>
+                                    <strong><a href="/Admin/adminNoticeView?bno=${row.bno}">${row.title }</a></strong>
                                 </td>
                                 <td>${row.writer}</td>
                                 <td>

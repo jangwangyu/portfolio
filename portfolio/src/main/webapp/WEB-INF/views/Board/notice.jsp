@@ -46,11 +46,11 @@
                             <tr style="background-color: #FFFFFF; color:#555555;" class="x-record">
                                 <td>공지</td>
                                 <td class="subject left txtBreak">
-                                    <strong><a href="#">${row.title }</a></strong>
+                                    <strong><a href="/Board/noticeView?bno=${row.bno}">${row.title }</a></strong>
                                 </td>
                                 <td>${row.writer}</td>
                                 <td>
-                                    <span class="txtNum"><fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+                                    <span class="txtNum"><fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd"/></span>
                                 </td>
                             </tr>
                         </c:forEach>

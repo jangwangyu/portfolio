@@ -59,7 +59,7 @@
                 </div>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="MemberList">
+                <a class="nav-link" href="memberList">
                    <i class="fa-solid fa-user"></i>
                     <span>회원 관리</span></a>
             </li>

@@ -17,12 +17,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.portfolio.Service.AdminService;
 import com.portfolio.Service.NoticeBoardService;
+import com.portfolio.VO.CategoryVO;
+import com.portfolio.VO.GoodsVO;
+import com.portfolio.VO.GoodsViewVO;
 import com.portfolio.VO.MemberVO;
 import com.portfolio.VO.NoticeBoardVO;
+
+import net.sf.json.JSONArray;
 
 @Controller
 @RequestMapping("/Admin")
@@ -35,6 +39,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoticeBoardControll
 	
 	@Inject
 	AdminService adminService;
+	
 	
 	// 로그인
 	@RequestMapping(value="/adminLogin", method=RequestMethod.GET)
@@ -126,5 +131,72 @@ private static final Logger logger = LoggerFactory.getLogger(NoticeBoardControll
 		logger.info("delete");
 		boardService.delete(bno);
 		return "redirect:/Admin/adminNotice";
+	}
+	
+	// 상품 등록
+	@RequestMapping(value= {"/itemInsertView"}, method= {RequestMethod.GET})
+	public void itemInsertView(Model model) throws Exception{
+		logger.info("itemInsertView");
+		
+		List<CategoryVO> category = null;
+		category = adminService.category();
+		model.addAttribute("category", JSONArray.fromObject(category));
+	}
+	@RequestMapping(value="/insertItem",method=RequestMethod.POST)
+	public String insertItem(GoodsVO vo)throws Exception{
+		adminService.insertItem(vo);
+		return "redirect:/Admin/interface";
+	}
+	
+	// 상품 리스트
+	@RequestMapping(value="/itemList",method=RequestMethod.GET)
+	public void itemList(Model model) throws Exception{
+		logger.info("itemList");
+		
+		List<GoodsVO> list = adminService.itemList();
+		model.addAttribute("list",list);
+	}
+	
+	// 상품 보기
+	@RequestMapping(value = "/itemView", method = RequestMethod.GET)
+	public void itemView(@RequestParam("n")int gdsNum,Model model)throws Exception{
+		logger.info("itemView");
+		
+		GoodsViewVO goodsView = adminService.goodsView(gdsNum);
+		
+		model.addAttribute("view", goodsView);
+		
+	}
+	
+	// 상품 수정
+	@RequestMapping(value = "/itemModify", method = RequestMethod.GET)
+	public void itemModify(@RequestParam("n") int gdsNum,Model model)throws Exception{
+		logger.info("modify");
+		
+		GoodsViewVO goods = adminService.goodsView(gdsNum);
+		model.addAttribute("goods",goods);
+		
+		List<CategoryVO> category = null;
+		category = adminService.category();
+		model.addAttribute("category", JSONArray.fromObject(category));
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String itemModifyPost(GoodsVO vo)throws Exception{
+		logger.info("modifyPost");
+		
+		adminService.goodsModify(vo);
+		
+		return "redirect:/Admin/interface";
+	}
+	
+	// 상품 삭제
+	@RequestMapping(value= "/delete", method = RequestMethod.POST)
+	public String itemDelete(@RequestParam("n")int gdsNum)throws Exception{
+		logger.info("delete");
+		
+		adminService.goodsDelete(gdsNum);
+		
+		return "redirect:/Admin/itemList";
 	}
 }

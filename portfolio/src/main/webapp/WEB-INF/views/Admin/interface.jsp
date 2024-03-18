@@ -70,9 +70,14 @@
                     <span>배송 관리</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="adminProductPage">
+                <a class="nav-link" href="itemInsertView">
                  <i class="fa-solid fa-box"></i>
-                    <span>상품 관리</span></a>
+                    <span>상품 등록</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="itemList">
+                 <i class="fa-solid fa-box"></i>
+                    <span>상품 목록</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">

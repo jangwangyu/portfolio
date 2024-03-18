@@ -14,4 +14,82 @@
 		delete from member
 		where member_id = #{member_id}
 	</delete>
+	<!-- 카테고리 -->
+	<select id="category" resultType="com.portfolio.VO.CategoryVO">
+		select
+			level,cateName, cateCode, cateCodeRef
+		from goods_category
+			start with cateCodeRef is null connect by prior cateCode = catecodeRef	
+	</select>
+	<!-- 상품 등록 -->
+	<insert id="insertItem">
+	   insert into goods (gdsNum, gdsName, cateCode, gdsPrice, gdsStock, gdsDes)
+	       values (goods_seq.nextval, #{gdsName}, #{cateCode}, #{gdsPrice}, #{gdsStock}, #{gdsDes})
+	</insert>
+	
+	<!-- 상품 리스트 -->
+	<select id="itemList" resultType="com.portfolio.VO.GoodsVO">
+		select
+			gdsNum,
+			gdsName,
+			cateCode,
+			gdsPrice,
+			gdsStock,
+			gdsDes,
+			gdsImg,
+			gdsDate
+		from Goods
+			order by gdsNum desc
+	</select>
+	
+	<!-- 상품 보기 -->
+	<!-- <select id="goodsView" resultType="com.portfolio.VO.GoodsVO">
+		select 
+			gdsNum,
+			cateCode,
+			gdsPrice,
+			gdsStock,
+			gdsDes,
+			gdsImg,
+			gdsDate
+		from goods
+		where gdsNum = #{gdsNum}
+	</select> -->
+	
+	<select id="goodsView" resultType="com.portfolio.VO.GoodsViewVO">
+		select
+			g.gdsNum, 
+			g.gdsName, 
+			g.cateCode, 
+			c.cateCodeRef, 
+			c.cateName, 
+			gdsPrice, 
+			gdsStock, 
+			gdsDes, 
+			gdsImg, 
+			gdsDate
+		from goods g
+		inner join goods_category c
+			on g.cateCode = c.cateCode
+		where g.gdsNum = #{gdsNum}		
+	</select>
+	
+	<!-- 상품 수정 -->
+	<update id="goodsModify">
+		update goods
+		set
+			gdsName = #{gdsName},
+			cateCode = #{cateCode},
+			gdsPrice = #{gdsPrice},
+			gdsStock = #{gdsStock},
+			gdsDes = #{gdsDes}
+		where gdsNum = #{gdsNum}
+	</update>
+	
+	<!-- 상품 삭제 -->
+	<delete id="goodsDelete">
+		delete
+			goods
+		where gdsNum = #{gdsNum}
+	</delete>
 </mapper>

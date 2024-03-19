@@ -1,10 +1,13 @@
 package com.portfolio.Controller;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.portfolio.Service.AdminService;
@@ -25,6 +29,7 @@ import com.portfolio.VO.GoodsVO;
 import com.portfolio.VO.GoodsViewVO;
 import com.portfolio.VO.MemberVO;
 import com.portfolio.VO.NoticeBoardVO;
+import com.portfolio.util.UploadFileUtils;
 
 import net.sf.json.JSONArray;
 
@@ -40,6 +45,8 @@ private static final Logger logger = LoggerFactory.getLogger(NoticeBoardControll
 	@Inject
 	AdminService adminService;
 	
+	@Resource(name="uploadPath")
+	private String uploadPath;
 	
 	// 로그인
 	@RequestMapping(value="/adminLogin", method=RequestMethod.GET)
@@ -143,7 +150,19 @@ private static final Logger logger = LoggerFactory.getLogger(NoticeBoardControll
 		model.addAttribute("category", JSONArray.fromObject(category));
 	}
 	@RequestMapping(value="/insertItem",method=RequestMethod.POST)
-	public String insertItem(GoodsVO vo)throws Exception{
+	public String insertItem(GoodsVO vo, MultipartFile file)throws Exception{
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+		
+		if(file != null) {
+			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+		}else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+		
+		vo.setGdsImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		vo.setGdsThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		adminService.insertItem(vo);
 		return "redirect:/Admin/interface";
 	}
@@ -182,9 +201,28 @@ private static final Logger logger = LoggerFactory.getLogger(NoticeBoardControll
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String itemModifyPost(GoodsVO vo)throws Exception{
+	public String itemModifyPost(GoodsVO vo,MultipartFile file, HttpServletRequest req)throws Exception{
 		logger.info("modifyPost");
 		
+		// 새로운 파일이 등록되었는지 확인
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			//기존 파일 삭제
+			new File(uploadPath + req.getParameter("gdsImg")).delete();
+			new File(uploadPath + req.getParameter("gdsThumbImg")).delete();
+			
+			// 새로 첨부한 파일을 등록
+			String imgUploadPath = uploadPath + File.separator + "imgUpload";
+			String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+			String fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+			
+			vo.setGdsImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+			vo.setGdsThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		}else { // 새로운 파일이 등록되지 않았다면
+			// 기존 이미지 사용
+			vo.setGdsImg(req.getParameter("gdsImg"));
+			vo.setGdsThumbImg(req.getParameter("gdsThumbImg"));
+			
+		}
 		adminService.goodsModify(vo);
 		
 		return "redirect:/Admin/interface";

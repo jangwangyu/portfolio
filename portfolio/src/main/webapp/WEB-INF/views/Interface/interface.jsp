@@ -12,11 +12,12 @@
                 <!-- 로그인 -->
              	<c:if test="${empty login}">
                     <li><a href="../Member/login" class="-ms">LOGIN</a></li>
+                    <li><a href="../Member/join" class="-ms">JOIN</a></li>
                 </c:if>
                  <c:if test="${not empty login}">
                  	<li><a href="${path}/Member/logout" class="-ms">LOGOUT</a></li>
-                 </c:if>
                     <li><a href="../Member/modify" class="-ms">MODIFY</a></li>
+                 </c:if>
                     <li><a href="../Member/cart" class="-ms">CART</a></li>
                     <li><a href="../Member/order" class="-ms">ORDER</a></li>
                     <li><a href="../Member/mypage" class="-ms">MYPAGE</a></li>

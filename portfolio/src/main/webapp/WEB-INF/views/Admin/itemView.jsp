@@ -12,6 +12,7 @@
 </head>
 <style>
 	#container table td {width:100px;}
+	.oriImg{width: 500px; height:auto;}
 </style>
 <body id="main">
     <div id="wrap">
@@ -44,6 +45,14 @@
 				<div class="inputArea">
 				   <label for="gdsDes">상품소개</label>
 				   <span>${view.gdsDes} </span>
+				</div>
+				<div class="inputArea">
+					<label for="gdsImg">이미지</label>
+					<p>원본 이미지</p>
+					<img src="${view.gdsImg}" class="oriImg"/>
+					 
+					<p>썸네일</p>
+					<img src="${view.gdsThumbImg}" class="thumbImg"/>
 				</div>
 				
 				<div class="inputArea">

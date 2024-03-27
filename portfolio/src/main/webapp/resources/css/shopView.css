@@ -1,0 +1,386 @@
+#contents{
+	width: 100%;
+	float: left;
+	min-height: 600px;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.all_width{
+	width:100%;
+	margin:0 auto;
+	max-width:1600px;
+	position:relative;
+	padding: 0 50px;
+	box-sizing: border-box;
+	padding-top:100px;
+}
+.path{
+	overflow:hidden;
+	height:50px;
+	line-height:50px;
+}
+.path{
+	overflow: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+    white-space: nowrap;
+    text-indent: 100%;
+}
+.x-product-detail{
+	max-width: 1100px;
+	position: relative;
+	margin: 0 auto;
+	padding: 0;
+	font-size: 0;
+}
+.x-product-detail .headingArea h2 {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+}
+.x-product-detail .headingArea .simple {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    line-height: 170%;
+    margin: 10px 0 8px;
+}
+.x-product-detail .imgArea .thumbnail{
+	display: inline-block;
+	positioin: relative;
+	width: 100%;
+}
+.x-product-detail .imgArea {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+.x-product-detail .imgArea .keyImg img {
+    width: 100%;
+    max-width: 500px;
+}
+.x-product-detail .infoArea {
+    width: 40%;
+    margin-left: 10%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 12px;
+}
+.x-product-detail .detailArea:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.x-product-detail .infoArea table {
+    border: 0;
+    font-size: 12px;
+    margin: 0;
+}
+.x-product-detail .infoArea th {
+    font-weight: normal;
+    color: #000;
+    width: 115px;
+    padding: 7px 0 8px 0;
+    text-align: left;
+    vertical-align: middle;
+}
+.x-product-detail .infoArea td {
+    padding: 7px 0 8px 0;
+    vertical-align: middle;
+}
+.x-product-detail .infoArea .x-product-option tr th {
+    vertical-align: top;
+}
+.x-product-detail .infoArea .x-product-option tr td {
+    padding: 4px 10px 4px 0;
+}
+.totalPrice {
+    margin: 0;
+    padding: 34px 9px 19px;
+    color: #555;
+    vertical-align: middle;
+    background: #fff;
+}
+.totalPrice .total {
+    color: #000;
+}
+.x-product-detail .infoArea .x-product-action {
+    padding: 30px 0 10px;
+}
+.ec-base-button {
+    padding: 10px 0;
+    text-align: center;
+}
+.ec-base-button[class*="gColumn"] {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+#bt_buynow {
+    flex: 2.5;
+}
+.ec-base-button[class*="gColumn"] [class^='btn'] {
+    margin: 0 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+[class^='btn'].sizeXL {
+    padding: 16px;
+    min-width: 80px;
+    font-weight: bold;
+    font-size: 12px;
+}
+[class^='btnSubmit'], a[class^='btnSubmit'] {
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 11px;
+    line-height: 19px;
+    text-decoration: none;
+    vertical-align: middle;
+    word-spacing: -0.5px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #fff;
+    background-color: #000000;
+}
+#bt_wish {
+    font-size: 14px;
+}
+[class^='btnNormal'], a[class^='btnNormal'] {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 2px 8px;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    font-size: 11px;
+    line-height: 19px;
+    font-weight: normal;
+    text-decoration: none;
+    vertical-align: middle;
+    word-spacing: -0.5px;
+    letter-spacing: 0;
+    text-align: center;
+    white-space: nowrap;
+    color: #000;
+    background-color: #fff;
+}
+#NaverChk_Button {
+    margin: 10px 0 0;
+    text-align: right;
+    float:right;
+}
+.npay_type_A_2 {
+    width: 285px !important;
+    height: 88px !important;
+}
+.npay_storebtn_bx {
+    display: inline-block !important;
+}
+.npay_storebtn_bx, .npay_button_box, .npay_button_box2, .npay_storebtn_bx *, .npay_button_box *, .npay_button_box2 * {
+    display: block !important;
+    overflow: hidden !important;
+    float: none !important;
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 none !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    font-family: '돋움',Dotum,Helvetica,sans-serif !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    vertical-align: top !important;
+    background: none !important;
+    border-radius: 0 !important;
+}
+.npay_button_box, .npay_button_box2 {
+    width: auto !important;
+    height: 100% !important;
+    *height: auto !important;
+    zoom: 1 !important;
+    padding: 0 4px !important;
+    border-top: 2px solid #2b2f3a !important;
+    background-color: #fff !important;
+}
+.npay_button {
+    position: relative !important;
+    margin: 0 !important;
+    padding: 11px 0 11px 86px !important;
+    zoom: 1 !important;
+}
+.npay_text {
+    display: block !important;
+    *display: inline !important;
+    position: absolute !important;
+    top: 11px !important;
+    left: 0 !important;
+    width: 79px !important;
+    height: 36px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: url(../../img/npay_sp_text.png) !important;
+    background-size: 180px auto !important;
+}
+.npay_btn_list {
+    *zoom: 1 !important;
+    display: table !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    table-layout: fixed !important;
+    list-style: none !important;
+}
+.npay_btn_list tbody {
+    display: table-row-group !important;
+}
+.npay_btn_list tr {
+    display: table-row !important;
+}
+.npay_btn_item {
+    display: table-cell !important;
+    height: 37px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+}
+.npay_btn_item:first-child .npay_btn_link {
+    margin: 0 !important;
+}
+
+.npay_btn_link.btn_green {
+    border-color: #00c851 !important;
+    background-color: #00de5a !important;
+}
+.npay_btn_link.npay_btn_pay {
+    border-color: #00c05a !important;
+    background-image: url(../../img/npay_sp_payment.png) !important;
+    background-position: 50% 0 !important;
+    background-repeat: no-repeat !important;
+    background-size: 63px auto !important;
+}
+.npay_btn_item.btn_width {
+    width: 40px !important;
+}
+.npay_btn_link.npay_btn_zzim {
+    background-image: url(../../img/npay_sp_zzim.png) !important;
+    background-position: 50% 0 !important;
+    background-repeat: no-repeat !important;
+    background-size: 35px auto !important;
+}
+.npay_btn_link.npay_btn_zzim, .npay_btn_link.npay_btn_talk {
+    width: 35px !important;
+}
+.npay_btn_link {
+    display: block !important;
+    height: 35px !important;
+    margin: 0 0 0 3px !important;
+    padding: 0 !important;
+    border: 1px solid #ccc !important;
+    border-radius: 2px !important;
+    background-color: #fff !important;
+    background-repeat: no-repeat !important;
+    background-repeat: no-repeat !important;
+    text-align: center !important;
+    text-decoration: none !important;
+}
+.npay_button_box .npay_blind, .npay_button_box .yellow, .npay_button_box .blue, .npay_button_box2 .npay_blind, .npay_button_box2 .yellow .npay_button_box2 .blue {
+    overflow: hidden !important;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    clip: rect(0 0 0 0) !important;
+}
+#prdDetail{
+    margin-bottom: 100px;
+}
+.x-product-additional .cont {
+    padding: 27px 10px 46px 9px;
+    color: #353535;
+    line-height: 18px;
+}
+#totalProducts {
+    margin: 21px 0 0;
+}
+#totalProducts table {
+    margin: 0;
+}
+#totalProducts thead th {
+    height: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+}
+#totalProducts tbody td p {
+    padding: 7px 10px 7px 0;
+    font-weight: bold;
+    line-height: 21px;
+}
+#totalProducts tbody td p.product span {
+    font-weight: normal;
+    color: #757575;
+    line-height: 18px;
+}
+#totalProducts tbody td .quantity {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    vertical-align: top;
+}
+#totalProducts tbody td img {
+    vertical-align: middle;
+}
+img, fieldset {
+    border: none;
+    vertical-align: top;
+}
+#totalProducts table .right {
+    padding-right: 9px;
+    font-weight: bold;
+    color: #000;
+    text-align: right;
+}
+#totalProducts > table > tbody > tr:first-child > td {
+    border-top: 1px solid #ebebeb;
+}
+#totalProducts tbody td .quantity input {
+    width: 22px;
+    height: 23px;
+    padding: 0 2px 0 3px;
+    line-height: 23px;
+    border: 1px solid #d4d8d9;
+    border-radius: 3px 0 0 3px;
+}
+#totalProducts tbody td .quantity .up {
+    position: absolute;
+    left: 28px;
+    top: 0;
+}
+#totalProducts tbody.option_products tr td .quantity .down, #totalProducts tbody.add_products tr td .quantity .down {
+    bottom: 0;
+    top: auto;
+}
+#totalProducts tbody td .quantity .down {
+    position: absolute;
+    left: 28px;
+    top: 12px;
+}
+#totalProducts tbody td img {
+    vertical-align: middle;
+}

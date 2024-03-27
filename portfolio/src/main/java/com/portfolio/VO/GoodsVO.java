@@ -27,6 +27,7 @@ public class GoodsVO {
 	
 	private String gdsThumbImg;
 	
+	
 	public String getGdsThumbImg() {
 		return gdsThumbImg;
 	}

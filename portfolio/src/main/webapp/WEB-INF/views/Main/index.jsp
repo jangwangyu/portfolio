@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="Ko"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link href="css/layout.css" rel="stylesheet" type="text/css" />
-    <link href="css/index.css" rel="stylesheet" type="text/css" />
+    <link href="/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="/css/index.css" rel="stylesheet" type="text/css" />
 <style>
     h2.bestTitle {
         margin:0px 38px;
@@ -16,7 +18,12 @@
         color: #000;
         letter-spacing: 1pt;
     }
-    
+    .goodsName { 
+    	display:block;
+    	text-align: left;
+    	font-weight: normal;
+    	margin: 0 0;
+     }
 </style>
 </head>
 <body id="main">
@@ -45,69 +52,20 @@
                         <div class="prdSlider" style="width: auto; position:relative;">
                             <div class="base-product-1">
                                 <ul class="prdList grid1">
-                                    <li class="prdbox1">
-                                        <div class="prdbox">
-                                            <a href="#"><!-- 옷 링크 -->
-                                                <img src="img/1.jpg" alt="옷2번">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="prdbox2">
-                                        <div class="prdbox">
-                                            <a href="#">
-                                                <img src="img/2.jpg" alt="옷1번">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="prdbox2">
-                                        <div class="prdbox">
-                                            <a href="#">
-                                                <img src="img/2.jpg" alt="옷1번">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="prdbox2">
-                                        <div class="prdbox">
-                                            <a href="#">
-                                                <img src="img/2.jpg" alt="옷1번">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="prdbox2">
-                                        <div class="prdbox">
-                                            <a href="#">
-                                                <img src="img/2.jpg" alt="옷1번">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="prdbox2">
-                                        <div class="prdbox">
-                                            <a href="#">
-                                                <img src="img/2.jpg" alt="옷1번">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="prdbox2">
-                                        <div class="prdbox">
-                                            <a href="#">
-                                                <img src="img/2.jpg" alt="옷1번">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="prdbox2">
-                                        <div class="prdbox">
-                                            <a href="#">
-                                                <img src="img/2.jpg" alt="옷1번">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="prdbox2">
-                                        <div class="prdbox">
-                                            <a href="#">
-                                                <img src="img/2.jpg" alt="옷1번">
-                                            </a>
-                                        </div>
-                                    </li>
+                                	<c:forEach items="${list }" var="list" varStatus="status">
+	                                	<c:if test="${status.index < 6}">
+		                                    <li class="prdbox1">
+		                                        <div class="prdbox">
+		                                            <a href="#"><!-- 옷 링크 -->
+		                                                <img src="${list.gdsImg }" alt="">
+		                                            </a>
+		                                            <span class="goodsName">
+		                                            	<a href="/shop/view?n=${list.gdsNum }">${list.gdsName }</a>
+		                                            </span>
+		                                        </div>
+		                                    </li>
+	                                    </c:if>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </div>
@@ -120,34 +78,23 @@
                 <h2>NEW ARRIVAL</h2>
                 <div id="underline"></div>
                 <ul class="prdList grid2">
+                <c:forEach items="${list }" var="list">
                     <li class="-record">
                         <div class="prdbox">
-                            <a href="#">
-                                <img src="img/2.jpg" alt="옷1번">
+                            <a href="/shop/shopView?n=${list.gdsNum }">
+                                <img src="${list.gdsImg }" alt="옷1번">
                             </a>
                         </div>
-                    </li>
-                    <li class="-record">
-                        <div class="prdbox">
-                            <a href="#">
-                                <img src="img/2.jpg" alt="옷1번">
-                            </a>
+                        <div class="description">
+                            <strong class="name">
+		                    	<a href="/shop/shopView?n=${list.gdsNum}">${list.gdsName }</a>
+		                    </strong>                        	
                         </div>
+                        <ul class="x-listitem2">
+                        	<li class="x-record" style="font-size:12px; color:#303030;">${list.gdsPrice }원</li>
+                        </ul>
                     </li>
-                    <li class="-record">
-                        <div class="prdbox">
-                            <a href="#">
-                                <img src="img/2.jpg" alt="옷1번">
-                            </a>
-                        </div>
-                    </li>
-                    <li class="-record">
-                        <div class="prdbox">
-                            <a href="#">
-                                <img src="img/1.jpg" alt="옷1번">
-                            </a>
-                        </div>
-                    </li>
+                </c:forEach>
                 </ul>
             </div>
             <!-- 하단 -->

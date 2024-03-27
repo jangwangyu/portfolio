@@ -23,8 +23,8 @@
 	</select>
 	<!-- 상품 등록 -->
 	<insert id="insertItem">
-	   insert into goods (gdsNum, gdsName, cateCode, gdsPrice, gdsStock, gdsDes,gdsImg,gdsThumImg)
-	       values (goods_seq.nextval, #{gdsName}, #{cateCode}, #{gdsPrice}, #{gdsStock}, #{gdsDes},#{gdsImg},#{gdsThumImg})
+	   insert into goods (gdsNum, gdsName, cateCode, gdsPrice, gdsStock, gdsDes,gdsImg,gdsThumbImg)
+	       values (goods_seq.nextval, #{gdsName}, #{cateCode}, #{gdsPrice}, #{gdsStock}, #{gdsDes},#{gdsImg},#{gdsThumbImg})
 	</insert>
 	
 	<!-- 상품 리스트 -->

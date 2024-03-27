@@ -128,3 +128,14 @@
     width:80%;
     margin: 0px auto;
 }
+.prdList .description .name{
+	margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 19px;
+    width: 100%;
+    position: relative;
+}
+.prdList .description .name a{
+    color:#333;
+}

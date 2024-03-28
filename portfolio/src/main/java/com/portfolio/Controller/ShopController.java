@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,18 +47,22 @@ public class ShopController {
 	//장바구니
 	@ResponseBody
 	@RequestMapping(value="/addCart", method = RequestMethod.POST)
-	public int addCart(CartVO cart,HttpSession session)throws Exception{
-		int result = 0;
+	public ResponseEntity<String> addCart(CartVO cart,HttpSession session)throws Exception{
+		
 		
 		MemberVO member = (MemberVO)session.getAttribute("login");
+		
 		System.out.println("로그인 정보 : " + (MemberVO)session.getAttribute("login"));
 		System.out.println("상품정보 : " + cart.getGdsNum());
 		logger.info("상품정보 : " + cart.getGdsNum());
+		
 		if(member != null) {
-			cart.setMember_id(member.getMember_id());
-			shopService.addCart(cart);
-			result = 1;
-		}
-		return result;
+	        cart.setMember_id(member.getMember_id());
+	        shopService.addCart(cart);
+	        return ResponseEntity.ok("true"); // 로그인이 되어 있는 경우
+	    } else {
+	        return ResponseEntity.ok("false"); // 로그인이 안 되어 있는 경우
+	    }
+		
 	}
 }

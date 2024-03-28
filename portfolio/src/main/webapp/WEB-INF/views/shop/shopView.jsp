@@ -214,6 +214,7 @@
 </script>
 <script>
 	$(".addCart_btn").click(function(){
+		
 		var gdsNum = $("#gdsNum").val();
 		var cartStock = $(".numBox").val();
 		
@@ -230,7 +231,7 @@
 			type : "post",
 			data : data,
 			success : function(result){
-				if(result == 1){
+				if(result == "true"){
 					alert("장바구니에 담았습니다")
 					$(".numBox").val("1");
 				}else{
